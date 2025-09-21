@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Luis Fernando Riascos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: #e0e0e0;
+            background: #0a0a1a;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(29, 17, 94, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 90% 70%, rgba(41, 10, 89, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 50% 40%, rgba(12, 22, 56, 0.6) 0%, transparent 30%);
+            z-index: -2;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        /* Navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(95, 75, 255, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #8a6dff, #5f4bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: #a89cc8;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white;
+            background: rgba(95, 75, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .main-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #8a6dff, #5f4bff, #7b68ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(95, 75, 255, 0.7);
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .main-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 8px;
+            background: linear-gradient(90deg, #8a6dff, #5f4bff);
+            border-radius: 4px;
+            filter: blur(8px);
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #a89cc8;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .character {
+            width: 380px;
+            height: 380px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .character-head {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #8a6dff, #5f4bff);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 30px rgba(95, 75, 255, 0.6);
+        }
+        
+        .character-face {
+            position: absolute;
+            width: 120px;
+            height: 70px;
+            background: #0a0a1a;
+            border-radius: 50%;
+            top: 40px;
+            left: 30px;
+        }
+        
+        .character-eye {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #8a6dff;
+            border-radius: 50%;
+            top: 25px;
+            box-shadow: 0 0 10px #8a6dff;
+        }
+        
+        .character-eye.left {
+            left: 30px;
+        }
+        
+        .character-eye.right {
+            right: 30px;
+        }
+        
+        .character-mouth {
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: #8a6dff;
+            border-radius: 10px;
+            bottom: 20px;
+            left: 40px;
+        }
+        
+        .character-body {
+            width: 220px;
+            height: 150px;
+            background: linear-gradient(135deg, #5f4bff, #7b68ee);
+            border-radius: 30px;
+            margin: -20px auto 0;
+            position: relative;
+            z-index: -1;
+            box-shadow: 0 0 30px rgba(95, 75, 255, 0.6);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Secciones */
+        section {
+            padding: 5rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .section-title {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #8a6dff;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(138, 109, 255, 0.4);
+        }
+        
+        /* Evidencias */
+        .workshops {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .workshop-card {
+            background: rgba(20, 15, 45, 0.6);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(95, 75, 255, 0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .workshop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #8a6dff, #5f4bff, #7b68ee);
+        }
+        
+        .workshop-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(95, 75, 255, 0.25);
+            border-color: rgba(95, 75, 255, 0.4);
+        }
+        
+        .workshop-title {
+            font-family: 'Quicksand', sans-serif;
+            color: #8a6dff;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(138, 109, 255, 0.3);
+        }
+        
+        .workshop-content {
+            flex-grow: 1;
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+        
+        .workshop-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #5f4bff, #7b68ee);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(95, 75, 255, 0.3);
+        }
+        
+        .workshop-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(95, 75, 255, 0.5);
+            gap: 1.2rem;
+        }
+        
+        /* Sección Sobre Mí */
+        .about-section {
+            background: rgba(20, 15, 45, 0.3);
+            border-radius: 30px;
+            padding: 4rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(95, 75, 255, 0.2);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill {
+            padding: 0.7rem 1.5rem;
+            background: rgba(95, 75, 255, 0.2);
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill:hover {
+            background: rgba(95, 75, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(95, 75, 255, 0.3);
+            font-size: 1rem;
+            color: #a89cc8;
+            background: rgba(15, 10, 40, 0.4);
+            backdrop-filter: blur(5px);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.8rem;
+            background: rgba(35, 25, 80, 0.4);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(95, 75, 255, 0.2);
+        }
+        
+        .contact-item:hover {
+            background: rgba(65, 45, 150, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(95, 75, 255, 0.3);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(95, 75, 255, 0.2);
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(45deg, #5f4bff, #7b68ee);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .nebula-1 {
+            width: 500px;
+            height: 500px;
+            background: #8a6dff;
+            top: 10%;
+            right: -100px;
+        }
+        
+        .nebula-2 {
+            width: 600px;
+            height: 600px;
+            background: #5f4bff;
+            bottom: 10%;
+            left: -200px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .main-title {
+                font-size: 3.5rem;
+            }
+            
+            .character {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .character-head {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .character-body {
+                width: 180px;
+                height: 120px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .about-text h2 {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .workshops {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-title {
+                font-size: 2.8rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .about-section, .workshop-card {
+                padding: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+            }
+            
+            .character {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .character-head {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .character-body {
+                width: 150px;
+                height: 100px;
+            }
+            
+            .character-face {
+                width: 90px;
+                height: 50px;
+                top: 30px;
+                left: 15px;
+            }
+            
+            .character-eye {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .character-mouth {
+                width: 30px;
+                height: 8px;
+                left: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .workshop-card {
+                padding: 1.5rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .character {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .character-head {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .character-body {
+                width: 120px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="logo">LR Portfolio</div>
+            <div class="nav-links">
+                <a href="#inicio" class="nav-link active"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#evidencias" class="nav-link"><i class="fas fa-folder-open"></i> Evidencias</a>
+                <a href="#sobre-mi" class="nav-link"><i class="fas fa-user"></i> Sobre Mí</a>
+                <a href="#contacto" class="nav-link"><i class="fas fa-envelope"></i> Contacto</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="main-title">Portfolio de Evidencias</h1>
+                    <p class="subtitle">Luis Fernando Riascos</p>
+                    <p class="hero-description">
+                        Software Engineering and Software Analysis & Development student at SENA.
+In this portfolio, I present all the workshops completed during my academic training,
+explaining their content and sharing my learning experience.
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Análisis y Desarrollo de Software</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-school"></i>
+                            <span>SENA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="character">
+                        <div class="character-head">
+                            <div class="character-face">
+                                <div class="character-eye left"></div>
+                                <div class="character-eye right"></div>
+                                <div class="character-mouth"></div>
+                            </div>
+                        </div>
+                        <div class="character-body"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Evidencias Section -->
+        <section id="evidencias">
+            <h2 class="section-title">Mis Evidencias</h2>
+            <div class="workshops">
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Video de presentación (GA1-240202501-AA1-EV02)</h3>
+                    <div class="workshop-content">
+                        <p>It was a video where we presented a friend. In my case, I talked about a friend who studies physics. This activity was very good to learn how to speak about a person. I learned how to present and mention people and their actions using the correct grammar. It also helped me to practice pronunciation and feel more confident when talking about others in English.</p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=y72mzWERntE" target="_blank" class="workshop-link">
+                        <i class="fas fa-play-circle"></i> Watch Video
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Folleto. GA1-240202501-AA1-EV03</h3>
+                    <div class="workshop-content">
+                        <p>In this workshop I learned about software analysis and development. I understood that software is very important today because it helps people and companies to work faster and better. I learned the main steps to create software: planning, analysis, design, development, testing, and maintenance. I also learned about technologies like programming languages, databases, and tools. Finally, I saw that software is used in many areas like web and mobile apps, business systems, video games, artificial intelligence, and cybersecurity.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1z0SBcfpJUcwSrObHEznEQdqlOMrjT4tx/view?usp=sharing" target="_blank" class="workshop-link">
+                        <i class="fas fa-file-alt"></i> View Brochure
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Evidencia GA2-240202501-AA1-EV03: crónica</h3>
+                    <div class="workshop-content">
+                        <p>This workshop was a good experience because I could practice my writing skills in English. At first, I thought it was a little difficult because I was just starting to write longer texts, but with the teacher's explanations and the study material I understood better. I wrote a text about a football player that I like a lot, N'Golo Kanté, and I learned how to organize ideas and write about his life and values. The activity also helped me to connect with the contents of software analysis and development, because I practiced planning, organization, and clear communication, which are very important skills for my career.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1kljmbnOfeyOzMNqA1w-RvIPYqmHbUP_U/view?usp=sharing" target="_blank" class="workshop-link">
+                        <i class="fas fa-book-open"></i> View Chronicle
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Presentación. GA2-240202501-AA2-EV02</h3>
+                    <div class="workshop-content">
+                        <p>I really liked this workshop because I could show a very beautiful place where I live. It was not only fun, but I also learned to describe places and things using English grammar. Before, I was more focused on describing people and objects, and I forgot a little about how to describe places. With this activity, I practiced new vocabulary and sentences, and now I feel more confident when I write about my city or special places.</p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=dvaq_lcQ1pk" target="_blank" class="workshop-link">
+                        <i class="fas fa-presentation-screen"></i> Watch Presentation
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Evidencia GA2-240202501-AA2-EV03: documento escrito</h3>
+                    <div class="workshop-content">
+                        <p>This was one of my favorite workshops because I learned many useful things. I liked it a lot because it gave me many ideas to make my own portfolio. I practiced how to organize information, how to write simple texts in English, and how to show my skills in a clear way. The activity also helped me to feel more confident about my future as a software developer, because I understood how important it is to present my work in a professional way.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1r7dIw8Vwtmx-FVmYy-wxepKH5o8vXkWK/view?usp=sharing" target="_blank" class="workshop-link">
+                        <i class="fas fa-file-pdf"></i> View Document
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">GA2-240202501-AA1-EV02: video entrevista virtual</h3>
+                    <div class="workshop-content">
+                        <p>This workshop was a simulation of an interview, and it helped me a lot to understand the questions and how to answer what is needed. It was also fun because I could talk about some things that I like, not only about study. I learned that an interview is not only about knowledge but also about showing my personality and communication. This activity gave me more confidence for the future.</p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=hcDkQDAouJU" target="_blank" class="workshop-link">
+                        <i class="fas fa-video"></i> Watch Interview
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Audio Reflection</h3>
+                    <div class="workshop-content">
+                        <p>I think this was the best workshop I did in my training, because I felt that I improved a lot. I practiced speaking and writing about attitudes, beliefs, and responsibilities in work and academic life. I learned that it is very important to have a positive attitude, to be responsible with tasks, and to keep learning every day. This activity helped me to express my ideas better in English and also to reflect about my values as a student and as a future professional.</p>
+                    </div>
+                    <a href="https://vocaroo.com/1fcGAszd13tp" target="_blank" class="workshop-link">
+                        <i class="fas fa-microphone-alt"></i> Listen to Audio
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Audio GA3-240202501</h3>
+                    <div class="workshop-content">
+                        <p>This workshop was about responsibility, flexibility, and clear goals in academic and work life. I learned the importance of self-direction, asking questions, adapting to changes, and staying organized to make good decisions. It was the most difficult workshop for me, but thanks to the teacher's feedback I could improve all the aspects that were indicated. In the end, I felt more confident and I understood how these values can help me grow as a student and as a future professional.</p>
+                    </div>
+                    <a href="https://vocaroo.com/11fSJ5xXVwLO" target="_blank" class="workshop-link">
+                        <i class="fas fa-headphones"></i> Listen to Audio
+                    </a>
+                </div>
+                
+                <div class="workshop-card">
+                    <h3 class="workshop-title">Mapa mental sobre su Personal Learning Environment PLE</h3>
+                    <div class="workshop-content">
+                        <p>This was the last workshop I did. In the workshop, I worked with a mind map, where I learned some strategies and tools to study English in an easier way. It was really fun because I could practice and organize my ideas. I hope to have more workshops like this in the future, because they help me improve my learning and motivate me to keep practicing.</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1URxuu8ezM_6kUB4iQoHUsLHWrxB5h0iW/view?usp=sharing" target="_blank" class="workshop-link">
+                        <i class="fas fa-brain"></i> View Mind Map
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sobre Mí Section -->
+        <section id="sobre-mi">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-section">
+                <div class="about-content">
+                    <div class="hero-image">
+                        <div class="character">
+                            <div class="character-head">
+                                <div class="character-face">
+                                    <div class="character-eye left"></div>
+                                    <div class="character-eye right"></div>
+                                    <div class="character-mouth"></div>
+                                </div>
+                            </div>
+                            <div class="character-body"></div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h2>Luis Fernando Riascos</h2>
+                        <p>Soy un apasionado estudiante de Ingeniería de Software y Análisis y Desarrollo de Software en el SENA. Mi pasión por la tecnología y el desarrollo me ha llevado a explorar diversas áreas dentro del campo del software.</p>
+                        <p>Me considero una persona proactiva, creativa y con gran capacidad de aprendizaje. Disfruto enfrentando nuevos desafíos y buscando soluciones innovadoras a problemas complejos.</p>
+                        <p>Mi objetivo es convertirme en un desarrollador full-stack altamente capacitado, contribuyendo a proyectos que tengan un impacto positivo en la sociedad.</p>
+                        
+                        <div class="skills">
+                            <span class="skill">Desarrollo Web</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">HTML/CSS</span>
+                            <span class="skill">Python</span>
+                            <span class="skill">Bases de Datos</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Inglés</span>
+                            <span class="skill">Resolución de Problemas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer id="contacto">
+        <h2 class="section-title">Contacto</h2>
+        <p>¿Interesado en colaborar o tienes alguna pregunta? No dudes en contactarme.</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>luisriascosmrtc@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+57 3145346408</span>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        
+        <p>© 2023 Luis Fernando Riascos - SENA</p>
+        <p>Análisis y Desarrollo de Software</p>
+    </footer>
+
+    <script>
+        // Create stars for background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 250;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', createStars);
+    </script>
+</body>
+</html>
